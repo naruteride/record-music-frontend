@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image, Button, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MainScreen from './components/MainScreen.js';
 
-function LogoTitle() {
+function HeaderBar() {
+
+
 	return (
+
 		<View style={{
 			flex: 1,
 			justifyContent: 'space-between',
@@ -16,14 +19,13 @@ function LogoTitle() {
 				style={{ width: 32, height: 32 }}
 				source={require('./images/image6.png')}
 			/>
-			<Text style={{ textAlignVertical: 'center', backgroundColor: "blue" }}>
-				asdf
-			</Text>
-			<Image
-				style={{ width: 32, height: 32 }}
-				source={require('./images/image6.png')}
-				onClick={() => alert('This is a button!')}
-			/>
+			<Text>asdfasdfasdf</Text>
+			<TouchableOpacity onPress={() => alert('This is a button!')}>
+				<Image
+					style={{ width: 32, height: 32 }}
+					source={require('./images/image6.png')}
+				/>
+			</TouchableOpacity>
 		</View>
 	);
 }
@@ -40,7 +42,7 @@ function RootStack() {
 				name="Home"
 				component={MainScreen}
 				options={{
-					headerTitle: props => <LogoTitle {...props} />,
+					headerTitle: props => <HeaderBar {...props} />,
 				}}
 			/>
 		</Stack.Navigator>
