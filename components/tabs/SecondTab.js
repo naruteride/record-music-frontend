@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import HeaderBar from "../Header.js";
 // import { SearchBar } from 'react-native-elements';   // 검색바 관련 모듈
 
 
@@ -9,7 +9,13 @@ const SecondStack = createStackNavigator();
 function SecondStackScreen() {
 	return (
 		<SecondStack.Navigator>
-			<SecondStack.Screen name="Second" component={SecondScreen} />
+			<SecondStack.Screen
+				name="Second"
+				component={SecondScreen}
+				options={{
+					headerTitle: props => <HeaderBar {...props} />
+				}}
+			/>
 			<SecondStack.Screen name="Details" component={DetailsScreen} />
 		</SecondStack.Navigator>
 	);

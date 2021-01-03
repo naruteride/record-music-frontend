@@ -1,26 +1,32 @@
 import React from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import HeaderBar from "../Header.js";
 // import { SearchBar } from 'react-native-elements';   // 검색바 관련 모듈
 
 
-const FourthStack = createStackNavigator();
-function FourthStackScreen() {
+const FifthStack = createStackNavigator();
+function FifthStackScreen() {
 	return (
-		<FourthStack.Navigator>
-			<FourthStack.Screen name="Fourth" component={FourthScreen} />
-			<FourthStack.Screen name="Details" component={DetailsScreen} />
-		</FourthStack.Navigator>
+		<FifthStack.Navigator>
+			<FifthStack.Screen
+				name="Fifth"
+				component={FifthScreen}
+				options={{
+					headerTitle: props => <HeaderBar {...props} />
+				}}
+			/>
+			<FifthStack.Screen name="Details" component={DetailsScreen} />
+		</FifthStack.Navigator>
 	);
 }
 
 
 
-function FourthScreen({ navigation }) {
+function FifthScreen({ navigation }) {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>Fourth screen</Text>
+			<Text>Fifth screen</Text>
 			<Button
 				title="Go to Details"
 				onPress={() => navigation.navigate('Details')}
@@ -42,4 +48,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default FourthStackScreen;
+export default FifthStackScreen;
