@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+// import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // import { SearchBar } from 'react-native-elements';   // 검색바 관련 모듈
 
 
-const HomeStack = createStackNavigator();
-function HomeStackScreen() {
+const ThirdStack = createStackNavigator();
+function ThirdStackScreen() {
 	return (
-		<HomeStack.Navigator>
-			<HomeStack.Screen name="Home" component={HomeScreen} />
-			<HomeStack.Screen name="Details" component={DetailsScreen} />
-		</HomeStack.Navigator>
+		<ThirdStack.Navigator>
+			<ThirdStack.Screen name="Third" component={ThirdScreen} />
+			<ThirdStack.Screen name="Details" component={DetailsScreen} />
+		</ThirdStack.Navigator>
 	);
 }
 
 
 
-function HomeScreen({ navigation }) {
+function ThirdScreen({ navigation }) {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>Home screen</Text>
+			<Text>Third screen</Text>
 			<Button
 				title="Go to Details"
 				onPress={() => navigation.navigate('Details')}
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default HomeStackScreen;
+export default ThirdStackScreen;
