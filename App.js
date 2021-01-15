@@ -10,6 +10,7 @@ import SecondStackScreen from "./components/tabs/SecondTab.js";
 import ThirdStackScreen from "./components/tabs/ThirdTab.js";
 import FourthStackScreen from "./components/tabs/fourthTab.js";
 import FifthStackScreen from "./components/tabs/FifthTab.js";
+import LoginStackScreen from "./components/login.js";
 
 
 // App()
@@ -44,9 +45,9 @@ function MyTabs() {
 					),
 				}}
 			/>
-			<Tab.Screen name="Second" component={SecondStackScreen}
+			<Tab.Screen name="로그인" component={LoginStackScreen}
 				options={{
-					tabBarLabel: 'Second',
+					tabBarLabel: '로그인',
 					tabBarIcon: ({ color, size }) => (
 						<Image
 							style={{ width: 24, height: 24 }}
