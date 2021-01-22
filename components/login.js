@@ -21,7 +21,6 @@ function LoginStackScreen() {
 				name="임시 로그인 페이지"
 				component={LoginScreen}
 			/>
-			{/* <LoginStack.Screen name="Details" component={DetailsScreen} /> */}
 		</LoginStack.Navigator>
 	);
 }
@@ -29,10 +28,7 @@ function LoginStackScreen() {
 
 
 function LoginScreen({ navigation }) {
-
-	// const [email, setEmail] = useState('');
-	// const [password, setPassword] = useState('');
-
+	
 	return (
 		<View style={styles.container}>
 			<Image style={styles.image} source={require("../images/image6.png")} />

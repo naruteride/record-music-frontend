@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Image, Button, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Button } from 'react-native-elements';
+import BottomDrawer from 'rn-bottom-drawer';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // 하단 탭에 들어갈 컴포넌트들
 import FirstStackNavigator from './components/tabs/FirstTab.js';
@@ -12,6 +15,57 @@ import FourthStackScreen from "./components/tabs/fourthTab.js";
 import FifthStackScreen from "./components/tabs/FifthTab.js";
 import LoginStackScreen from "./components/login.js";
 
+
+const TAB_BAR_HEIGHT = 40;
+const HEADER_HEIGHT = 0;
+
+
+export default function App() {
+	return (
+		<>
+			<View style={styles.body}>
+				{/* <MapView style={{ flex: 1 }} provider={PROVIDER_GOOGLE} /> */}
+				<BottomDrawer
+					style={styles.bottomDrawer}
+					containerHeight={550}
+					offset={TAB_BAR_HEIGHT + HEADER_HEIGHT}
+					onExpanded={() => { console.log('expanded') }}
+					onCollapsed={() => { console.log('collapsed') }}
+					downDisplay={420}
+					startUp={false}
+					shadow={true}
+				>
+					{renderContent()}
+				</BottomDrawer>
+			</View>
+		</>
+	)
+}
+
+function renderContent() {
+	return (
+		<View>
+			<Text>asdf</Text>
+		</View>
+	)
+}
+
+
+
+const styles = StyleSheet.create({
+	body: {
+		flex: 1,
+		backgroundColor: "#fff",
+	},
+	bottomDrawer: {
+		color: "red"
+	}
+});
+
+
+
+
+/************************************************************
 
 // App()
 export default function App() {
@@ -96,3 +150,5 @@ function MyTabs() {
 const styles = {
 
 }
+
+********************************************/
