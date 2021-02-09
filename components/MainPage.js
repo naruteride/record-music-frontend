@@ -1,46 +1,62 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
+import BottomDrawer from 'rn-bottom-drawer';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
-// 하단 탭에 들어갈 컴포넌트들
-import MainPageStackNavigator from './components/MainPage.js';
-import SignInStackScreen from "./components/SignIn.js";
-import SignUpStackScreen from "./components/SignUp.js";
 
-const Stack = createStackNavigator();
+const TAB_BAR_HEIGHT = 40;
+const HEADER_HEIGHT = 0;
 
-export default function App() {
 
-	let isSignedInToken = false;
+function MainPage() {
 
-	if (isSignedInToken) {
-		return (
-			<NavigationContainer>
-				<Stack.Navigator screenOptions={{ headerShown: false }}>
-					<Stack.Screen name="MainPage" component={MainPageStackNavigator} />
-				</Stack.Navigator>
-			</NavigationContainer>
-		)
-	} else {
-		return (
-			<NavigationContainer>
-
-				<Stack.Navigator screenOptions={{ headerShown: false }}>
-					<Stack.Screen name="SignIn" component={SignInStackScreen} />
-					<Stack.Screen name="MainPage" component={MainPageStackNavigator} />
-				</Stack.Navigator>
-			</NavigationContainer>
-		)
-	}
+	return (
+		<>
+			<View style={styles.body}>
+				<MapView style={{ flex: 1 }} provider={PROVIDER_GOOGLE} />
+				<BottomDrawer
+					style={styles.bottomDrawer}
+					containerHeight={550}
+					offset={TAB_BAR_HEIGHT + HEADER_HEIGHT}
+					onExpanded={() => { console.log('expanded') }}
+					onCollapsed={() => { console.log('collapsed') }}
+					downDisplay={420}
+					startUp={false}
+					shadow={true}
+				>
+					{renderContent()}
+				</BottomDrawer>
+			</View>
+		</>
+	)
 }
 
-//	         ___
-//	 `-._\ /     `~~"--.,_
-//	 ------>|              `~~"--.,_
-//	  _.-'/ '.____,,,,----"""~~```'
+function renderContent() {
+	return (
+		<View>
+			<Text>asdf</Text>
+		</View>
+	)
+}
 
+
+
+const styles = StyleSheet.create({
+	body: {
+		flex: 1,
+		backgroundColor: "#f0f0f0",
+	},
+	bottomDrawer: {
+		
+	}
+});
+
+
+
+export default MainPage;
 
 /************************************************************
 
