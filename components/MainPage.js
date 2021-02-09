@@ -3,8 +3,9 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
-import BottomDrawer from 'rn-bottom-drawer';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import BottomDrawer from 'rn-bottom-drawer';
+import Drawer from "./Drawer.js";
 
 
 const TAB_BAR_HEIGHT = 40;
@@ -36,8 +37,11 @@ function MainPage() {
 
 function renderContent() {
 	return (
-		<View>
-			<Text>asdf</Text>
+		<View style={{
+			flex: 1,
+		}}>
+			{/* <Text>asdf</Text> */}
+			<Drawer />
 		</View>
 	)
 }

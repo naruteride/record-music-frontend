@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Icon } from "react-native-vector-icons";
 
 import SignInEmailScreen from "./SignInEmail.js";
 import SignUpStackScreen from "./SignUp.js";
@@ -15,7 +14,7 @@ const SignInStack = createStackNavigator();
 function SignInStackScreen() {
 
 	// 토큰 변수
-	isSignedInToken = true;
+	isSignedInToken = false;
 
 	// 만약 토큰이 있을 경우 메인페이지로 보내버림
 	// if (isSignedInToken) {
