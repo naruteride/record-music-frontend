@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import BottomDrawer from 'rn-bottom-drawer';
 import Drawer from "./Drawer.js";
 
@@ -14,35 +12,58 @@ const HEADER_HEIGHT = 0;
 
 function MainPage() {
 
+	function tangsuyuk() {
+		alert("마커 클릭");
+	}
+
 	return (
 		<>
 			<View style={styles.body}>
-				<MapView style={{ flex: 1 }} provider={PROVIDER_GOOGLE} />
+				<MapView
+					style={{ flex: 1 }}
+					provider={PROVIDER_GOOGLE}
+					initialRegion={{
+						latitude: 37.300228031632635,
+						longitude: 126.83764906912629,
+						latitudeDelta: 0.0922,
+						longitudeDelta: 0.0421,
+					}}// 37.300228031632635, 126.83764906912629
+				>
+					<Marker
+						coordinate={{
+							latitude: 37.300228031632635,
+							longitude: 126.83764906912629
+						}}
+						title="학교 앞 밥먹으면서"
+						description="사랑비 - 김태우"
+						onPress={tangsuyuk}
+					>
+						<Image
+							source={require("./../images/KakaoTalk_20210209_174508299.jpg")}
+							style={{
+								height: 50,
+								width: 50,
+								objectFit: "cover",
+								borderRadius: 25,
+							}}
+						/>
+					</Marker>
+				</MapView>
+
 				<BottomDrawer
 					style={styles.bottomDrawer}
 					containerHeight={550}
 					offset={TAB_BAR_HEIGHT + HEADER_HEIGHT}
 					onExpanded={() => { console.log('expanded') }}
 					onCollapsed={() => { console.log('collapsed') }}
-					downDisplay={420}
+					downDisplay={400}
 					startUp={false}
 					shadow={true}
 				>
-					{renderContent()}
+					<Drawer />
 				</BottomDrawer>
 			</View>
 		</>
-	)
-}
-
-function renderContent() {
-	return (
-		<View style={{
-			flex: 1,
-		}}>
-			{/* <Text>asdf</Text> */}
-			<Drawer />
-		</View>
 	)
 }
 
@@ -54,98 +75,9 @@ const styles = StyleSheet.create({
 		backgroundColor: "#f0f0f0",
 	},
 	bottomDrawer: {
-		
+		overflow: "hidden",
 	}
 });
 
 
-
 export default MainPage;
-
-/************************************************************
-
-// App()
-export default function App() {
-	return (
-		<>
-			<NavigationContainer>
-				<MyTabs />
-			</NavigationContainer >
-		</>
-	);
-};
-
-
-
-// 하단 네비게이션
-const Tab = createBottomTabNavigator();
-
-function MyTabs() {
-	return (
-		<Tab.Navigator>
-			<Tab.Screen
-				name="First"
-				component={FirstStackNavigator}
-				options={{
-					tabBarLabel: 'First',
-					tabBarIcon: ({ color, size }) => (
-						<Image
-							style={{ width: 24, height: 24 }}
-							source={require('./images/image6.png')}
-						/>
-					),
-				}}
-			/>
-			<Tab.Screen name="로그인" component={LoginStackScreen}
-				options={{
-					tabBarLabel: '로그인',
-					tabBarIcon: ({ color, size }) => (
-						<Image
-							style={{ width: 24, height: 24 }}
-							source={require('./images/image6.png')}
-						/>
-					),
-				}}
-			/>
-			<Tab.Screen name="Third" component={ThirdStackScreen}
-				options={{
-					tabBarLabel: 'Third',
-					tabBarIcon: ({ color, size }) => (
-						<Image
-							style={{ width: 24, height: 24 }}
-							source={require('./images/image6.png')}
-						/>
-					),
-				}}
-			/>
-			<Tab.Screen name="Fourth" component={FourthStackScreen}
-				options={{
-					tabBarLabel: 'Fourth',
-					tabBarIcon: ({ color, size }) => (
-						<Image
-							style={{ width: 24, height: 24 }}
-							source={require('./images/image6.png')}
-						/>
-					),
-				}}
-			/>
-			<Tab.Screen name="Fifth" component={FifthStackScreen}
-				options={{
-					tabBarLabel: 'Fifth',
-					tabBarIcon: ({ color, size }) => (
-						<Image
-							style={{ width: 24, height: 24 }}
-							source={require('./images/image6.png')}
-						/>
-					),
-				}}
-			/>
-		</Tab.Navigator>
-	);
-}
-
-const styles = {
-
-}
-
-********************************************/
